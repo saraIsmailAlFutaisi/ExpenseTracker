@@ -3,7 +3,7 @@
   <!--سارة إسماعيل الفطيسي
   تتكلم هده الصفحةعلي فائدت هدا الموقع-->
     <head  style="background-color: rgb(50, 177, 177);">
-        <link rel="icon" href="../php/icoon/presentation.png"/>
+        <link rel="icon" href="../ExpenseTracker/icoon/presentation.png"/>
         <meta name="تتكلم عن محتوبات الموقع "/>
         <title> Expense Tracker(ET) </title>
         <meta.charset="UTF-8"/> 
@@ -12,7 +12,7 @@
     <header style="background-color: rgb(50, 177, 177);">
     <center><h2><p> Expense Tracker(ET)</p></h2></center> 
      <nav>
-    <button><a href="../php/home page.html "><strong><h2>back</h2></strong></a></button>
+    <button><a href="../ExpenseTracker/home page.php  "><strong><h2>back</h2></strong></a></button>
     
     </nav>
     </header>
@@ -42,7 +42,7 @@
     <p>and control user spending habits,</p>
     <hr>
 
-     <img alt=""src="../php/pictuer\Money stress-rafiki.svg"/>
+     <img alt=""src="../ExpenseTracker/pictuer\Money stress-rafiki.svg"/>
     </main>
 
 

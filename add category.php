@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-   <link rel="icon" href="../php/icoon/money (1).png"/>
+   <link rel="icon" href="../ExpenseTracker/icoon/money (1).png"/>
             <meta name=" add category "  content=" بإضافة  النفقات"/>
             <title>add category</title>
             <meta charset="UTF-8" />
     </head>
     <body style="background-color:rgb(3 244 197 / 35%)"  >
         <header style="background-color: rgb(87 138 143 / 39%);" >
-            <button><a href="../php/home page.html "><h2>back</h2></a></button>
+            <button><a href="../ExpenseTracker/home page.php "><h2>back</h2></a></button>
            
         </header>
         <main>

@@ -6,19 +6,26 @@
       */
     $admins=array("admin_2023","cs314_2023","system_admin");
     $pass=array("Admin_2023","Cs314_2023","System_admin1");
-    if(isset($_POST['submit'])) 
+    
+    session_start();
+    if($_SERVER(["REQUEST_METHOD"] ==="POST"))
     {
-     $user= $_POST['username'];
+      $user= $_POST['username'];
      $passaword=$_POST['password'];
      if(in_array($user, $admins ) && (in_array( $passaword,$pass) ))
      {
-        
+         $_SESSION['username']= $user;
             
             echo'welcom back  ' ;
             
             echo $_POST['username'];
+            
+    
+            
+           
           
-        header('REFRESH:5;URL= home page.html');
+          
+        header('REFRESH:5;URL= home page.php');
         
     }
    else{

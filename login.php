@@ -6,7 +6,7 @@
    !-->
 <html>
   <head>
-  <link rel="icon" href="../php/icoon/profile.png"/>
+  <link rel="icon" href="../ExpenseTracker/icoon/profile.png"/>
     <meta charset="UTF-8" />
    <meta name="تسجيل دخول " content="دخول لأشخاص المسجلين في الصفحة"/ >
    
@@ -14,7 +14,7 @@
   </head> 
   <body style="background-color:rgb(3 244 197 / 35%)" >
     <header style="background-color: rgb(87 138 143 / 39%);;" >
-    <button><a href="../php/home page.html "><strong><h2>back</h2></strong></a></button>
+    <button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
     </header>
     <main >
     
@@ -40,7 +40,8 @@
  
  
    </form>
-   
+         
+                    
     </main> 
   </body>
   <footer >

@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
            
       
            
-            header('REFRESH:5;url=home page.html');
+            header('REFRESH:5;url=home page.php');
         
       }
       
