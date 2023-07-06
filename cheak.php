@@ -58,20 +58,30 @@ if(isset($_POST['submit'])){
        $_SESSION['Middle']= $Middle  ;
        $_SESSION['Last']=$Last;
      ?>  
-  /*************** 
-                 ?>
-           <?php
-           $username ="root";
-           $passwor ="";
-           $database = new PDO('mysql: host=127.0.0.1; dbname=expensetracker ', $username, $passwor);
-           if($database)
-           {
-            echo"conact whith database";
-           }
-           else{
-            echo"connact is fiel";
-           }
-         
+ 
+<?php
 
-           ?>
-           */
+require_once 'databes.php';
+$conn = new mysqli($hn, $un, $pw, $db);
+if ($conn->connect_error) {
+      echo "<p>Error: Could not connect to database.<br/>
+      Please try again later.</p>";
+        die($conn -> error);
+    }
+ /*************** 
+    $query = "INSERT INTO user(firstname, middlename, lastname, email,phonenumber,passwordd)  VALUES 
+    ( '$firstname', ' $middlename', '$lastname ','$email','$phonenumber', '$pass')" ;
+        $result = $conn->query($query);
+
+    if ($result) {
+        echo  "<p>user inserted into the database.</p>";
+    } else {
+        echo   $conn -> error ;
+        echo   "<br/>.The item was not added.";
+        echo    "<br/>$query ";
+    }
+  
+       
+       $conn -> close();
+       */
+?>
