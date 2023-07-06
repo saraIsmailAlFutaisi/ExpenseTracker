@@ -12,15 +12,21 @@
     <header style="background-color: rgb(50, 177, 177);">
     <center><h2><p> Expense Tracker(ET)</p></h2>
   
-    <a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
+   <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
     <?php
-                         session_start();
-                         if(empty( $_SESSION['First'] ))
-                         { 
-                          echo'no acount' ;
-                     }
-                         else{
+                              session_start();
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
+                           {  
+                            echo'no acount' ;
+                       }
+                         elseif(!empty( $_SESSION['First'] ))
+                         {
                           echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                         }
+                         else
+                         {
+                           
+                          echo $_SESSION['username'];
                          }
                          ?>
   </center> 

@@ -15,31 +15,38 @@
    
    
     <title>sign up</title>
-    
+   
      
 </head>
 <body style="background-color:rgb(3 244 197 / 35%)"  >
   <header style="background-color: rgb(87 138 143 / 39%);" >
   <button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
-  <a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
+  <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png"></strong>
+  
   <?php
-       session_start();
-       if(empty( $_SESSION['First'] ))
-    {  
-      echo'no acount' ;
-}
-  else{
-   echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
-  }
-  ?>
+                              session_start();
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
+                           {  
+                            echo'no acount' ;
+                       }
+                         elseif(!empty( $_SESSION['First'] ))
+                         {
+                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                         }
+                         else
+                         {
+                           
+                          echo $_SESSION['username'];
+                         }
+                         ?>
   </header>
 
     <form action="cheak.php" method="post" > 
      
-       <p>
+       <p> 
           <label> firs tname</label>
           <input type="text" required   maxlength="10" minlength="5" placeholder="in ther your first name" name="firstname" > 
-    
+          
     
        
       

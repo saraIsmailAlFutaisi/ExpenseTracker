@@ -32,10 +32,10 @@ if(isset($_POST['submit'])){
             echo"$phonenumber";
             echo'<br>';
     
-      /***
+     
            
             header('REFRESH:5;url=home page.php');
-         */
+         
       }
       
       else{
@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
      ?>  
  
 <?php
-
+/****** *
 require_once 'databes.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) {
@@ -68,7 +68,7 @@ if ($conn->connect_error) {
       Please try again later.</p>";
         die($conn -> error);
     }
- /*************** 
+ 
     $query = "INSERT INTO user(firstname, middlename, lastname, email,phonenumber,passwordd)  VALUES 
     ( '$firstname', ' $middlename', '$lastname ','$email','$phonenumber', '$pass')" ;
         $result = $conn->query($query);

@@ -9,14 +9,21 @@
     <body style="background-color:rgb(3 244 197 / 35%)"  >
         <header style="background-color: rgb(87 138 143 / 39%);" >
             <button><a href="../ExpenseTracker/home page.php "><h2>back</h2></a></button>
-          <a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  <?php
+        <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  
+        <?php
                               session_start();
-                              if(empty( $_SESSION['First'] ))
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
                            {  
                             echo'no acount' ;
                        }
-                         else{
+                         elseif(!empty( $_SESSION['First'] ))
+                         {
                           echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                         }
+                         else
+                         {
+                           
+                          echo $_SESSION['username'];
                          }
                          ?>
                           

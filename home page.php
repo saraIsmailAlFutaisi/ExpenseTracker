@@ -40,11 +40,43 @@
                 <center>
                         <ul>
                             <li><a href="../ExpenseTracker/about us.php"><strong><img alt="exam"src="../ExpenseTracker/icoon/exam.png">about us</strong></a></li> </ul> 
-
-                            <ul>
+                            <?php
+                             session_start();
+                             if(empty( $_SESSION['First'] )&&empty($_SESSION['username']))
+                           { 
+                          ?>
+                           <ul>
                                 <li><a href="../ExpenseTracker/login.php"><strong><img alt="login"src="../ExpenseTracker/icoon/login.png"> logn  </strong></a> </li> 
                          
                             </ul>
+                            <?php
+                          }
+                            
+                           else if(!empty( $_SESSION['First'] )){
+                            ?>
+                             <ul>
+                            <li><a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/user (2).png"></strong>  
+                     
+                    </a>  
+                  
+                      <?php
+                          
+                            echo  $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                           }
+                           else{
+                            ?>
+                            <ul>
+                            <li><a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/user (2).png"></strong>  
+                     
+                    </a>  
+                  
+                      <?php
+                          
+                            echo $_SESSION['username'];
+                           }
+                           
+                            ?>
+                           </li>  </ul>
                             <ul>
                               <li> <a href="../ExpenseTracker/signup.php"><strong><img alt="user"src="../ExpenseTracker/icoon/add-user.png">signup</strong></a> </li>   
                             </ul>
@@ -55,19 +87,8 @@
                             <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
 
                            </ul>
-                           <ul>
-                            <li><a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png"></strong>  <?php
-                                session_start();
-                                if(empty( $_SESSION['First'] ))
-                             { 
-                              echo'no acount' ;
-                         }
-
-                           else{
-                            echo  $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
-                           }
-                     ?>   </a></center></li> 
-                           </ul>
+                         
+                       
                           
                            
 

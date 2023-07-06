@@ -8,13 +8,14 @@
     $pass=array("Admin_2023","Cs314_2023","System_admin1");
     
     
-    if($_issert(["submit"]))
+    if(isset($_POST['submit']))
     {
       $user= $_POST['username'];
      $passaword=$_POST['password'];
      if(in_array($user, $admins ) && (in_array( $passaword,$pass) ))
      {
          $_SESSION['username']= $user;
+       
             
             echo'welcom back  ' ;
             
@@ -40,5 +41,13 @@
       echo'error';
     }
     ?>
+    <?php 
+     
+     session_start();
+     $Firstuser=$_POST['username'];
+    
+     $_SESSION['username']=  $Firstuser;
+    
+   ?>  
     
 
