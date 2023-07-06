@@ -29,28 +29,21 @@
               
                     
         </header>
+        <?php
+
+
+
+         ?>
         
             <nav  > 
                          
                 <center>
                         <ul>
                             <li><a href="../ExpenseTracker/about us.php"><strong><img alt="exam"src="../ExpenseTracker/icoon/exam.png">about us</strong></a></li> </ul> 
+
                             <ul>
-                                <li><a href="../ExpenseTracker/login.php"><strong><img alt="login"src="../ExpenseTracker/icoon/login.png">
-                                <?php
-                                session_start();
-                                if(isset($_SESSION['username']))
-                                {
-                                print_r($_SESSION);
-                                }
-                                
-                                ?>
-                                login
-                            
-                            
-                            
-                            
-                            </strong></a> </li> 
+                                <li><a href="../ExpenseTracker/login.php"><strong><img alt="login"src="../ExpenseTracker/icoon/login.png"> logn  </strong></a> </li> 
+                         
                             </ul>
                             <ul>
                               <li> <a href="../ExpenseTracker/signup.php"><strong><img alt="user"src="../ExpenseTracker/icoon/add-user.png">signup</strong></a> </li>   
@@ -59,15 +52,31 @@
                              <li><a href="../ExpenseTracker/add category.php"><strong><img alt="money.png"src="../ExpenseTracker/icoon/money.png"> category</strong></a></li>
                            </ul>
                            <ul>
-                            <li><a href=""><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></center></li> 
-                           </ul>
-                           
+                            <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
 
+                           </ul>
+                           <ul>
+                            <li><a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png"></strong>  <?php
+                                session_start();
+                                if(empty( $_SESSION['First'] ))
+                             { 
+                              echo'no acount' ;
+                         }
+
+                           else{
+                            echo  $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                           }
+                     ?>   </a></center></li> 
+                           </ul>
+                          
+                           
 
                        
             </nav>
+
        
         <main>
+     
           <img alt="background" src="../ExpenseTracker/pictuer/Money stress-bro (1).svg " />
            
         </main>
@@ -83,3 +92,4 @@
         <img alt="telegram"src="../ExpenseTracker/icoon/telegram.png"/>
     </footer>
 </html>
+"C:\xampp\htdocs\php\ExpenseTracker\icoon\profile.png"

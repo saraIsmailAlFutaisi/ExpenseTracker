@@ -7,8 +7,8 @@
     $admins=array("admin_2023","cs314_2023","system_admin");
     $pass=array("Admin_2023","Cs314_2023","System_admin1");
     
-    session_start();
-    if($_SERVER(["REQUEST_METHOD"] ==="POST"))
+    
+    if($_issert(["submit"]))
     {
       $user= $_POST['username'];
      $passaword=$_POST['password'];

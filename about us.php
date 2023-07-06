@@ -10,10 +10,25 @@
     </head>
     <body >
     <header style="background-color: rgb(50, 177, 177);">
-    <center><h2><p> Expense Tracker(ET)</p></h2></center> 
+    <center><h2><p> Expense Tracker(ET)</p></h2>
+  
+    <a href=""><strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
+    <?php
+                         session_start();
+                         if(empty( $_SESSION['First'] ))
+                         { 
+                          echo'no acount' ;
+                     }
+                         else{
+                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                         }
+                         ?>
+  </center> 
      <nav>
-    <button><a href="../ExpenseTracker/home page.php  "><strong><h2>back</h2></strong></a></button>
+    <button><a href="../ExpenseTracker/home page.php  "><strong><h1>back</h1></strong></a></button>
     
+   
+                        
     </nav>
     </header>
     
@@ -23,11 +38,15 @@
      margin-top: 0%;   
      margin-left: 0%;
      margin-right: 0%;
-
+     
     }
    
     </style>
  <strong> 
+   <h1>
+  
+   </h1>
+   <h3>
   <p>
      This site is designed to track personal pages highlighting</p>
 
@@ -41,7 +60,7 @@
      
     <p>and control user spending habits,</p>
     <hr>
-
+    </h3>
      <img alt=""src="../ExpenseTracker/pictuer\Money stress-rafiki.svg"/>
     </main>
 
