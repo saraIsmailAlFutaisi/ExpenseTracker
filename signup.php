@@ -47,10 +47,8 @@
           <label> firs tname</label>
           <input type="text" required   maxlength="10" minlength="5" placeholder="in ther your first name" name="firstname" > 
           
-    
-       
-      
-          <label> middle name</label>
+     
+          <label> middle name</label>                                                                                                           
          <input type="text" required   maxlength="10" minlength="5" placeholder="in ther your middle name" name="middlename" > 
       
       
@@ -79,18 +77,11 @@
      </div> 
      
     
-    
   
-      <p>  <label for="Choose " >functin</label>
-                  <select  name="Choose afunctin " id="Choose " required>
-                         <option value="1">student</option>
-                         <option value="2">teacher</option>
-                         <option value="3">employee</option>
-                         <option value="4">free work</option>
-                        
-                        </p>
-                        
-                  </select>
+     <label>afunctin</label>
+        <p>  <input type="text" required   maxlength="15" minlength="10"  placeholder="in ther your functin" name="functin" ></p>
+          
+  
 
 
 

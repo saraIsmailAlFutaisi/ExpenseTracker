@@ -1,6 +1,6 @@
 <?php 
     $hn = 'localhost';
-    $db = 'expensetracker';
+    $db = 'expensetrackerr';
     $un = 'root';
     $pw = '';
 ?>

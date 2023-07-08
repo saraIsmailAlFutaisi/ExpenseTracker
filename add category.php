@@ -30,21 +30,21 @@
                           
         </header>
         <main>
-       <form action=""  method="post">
+       <form action="category show.php"  method="post">
              <div>
                <p> <label>date</label>
                 <input  type="date"   name="DATE"/></p>
             </div>
             <div> 
                 <p>  <label for="Choose " >Choose a category</label>
-                  <select  name="Choose a category" id="Choose " required>
-                         <option value="1">food</option>
-                         <option value="2">gift</option>
-                         <option value="3">study</option>
-                         <option value="4">holidays</option>
-                         <option value="5">fule</option>
-                         <option value="6">clothes</option>
-                         <option value="7">home</option>
+                  <select  name="Chooseacategory" id="Choose " required>
+                         <option value="food" >food</option>
+                         <option value="gift" >gift</option>
+                         <option value="study" >study</option>
+                         <option value="holidays">holidays</option>
+                         <option value="fule" >fule</option>
+                         <option value="clothes" >clothes</option>
+                         <option value="home" >home</option>
                         </p>
                         
                   </select>
@@ -52,29 +52,26 @@
 
             <div> 
                <p> <label >the amount </label>
-                <input type="the amount" required placeholder=" the amount" name="the amount" autofocus></p>
+                <input type="the amount" required placeholder=" the amount" name="theamount" autofocus></p>
            </div>
             
           <div> 
           <p>  <label for="pay by" >pay by </label>
-            <select  name="pay by" id="pay by" required>
-                   <option value="1">check</option>
-                   <option value="2">credit card</option>
-                   <option value="3">Cash</option></p>
+            <select  name="payby" id="pay by" required>
+                   <option value="check">check</option>
+                   <option value="creditcard" >credit card</option>
+                   <option value="Cash">Cash</option></p>
                   
             </select>
           </div>
-          <div>
-            <p><label>more details</label></p>
-            <p> <textarea name="subject" cols="20" rows="10" placeholder="inter your  details"></textarea></p>
-       </div>  
+          
          <div>
              <p><label> inter picture</label>
-             <input type="file"/></p>
+             <input type="file" name="file"/></p>
          </div>
          <div> 
             <label> comment</label>
-            <p><input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="username" ></p> 
+            <p><input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" ></p> 
          </div>
          <p>
             <input type="submit" value="save" name="save">

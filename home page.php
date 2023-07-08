@@ -87,6 +87,10 @@
                             <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
 
                            </ul>
+                           <ul>
+                            <li><a href=""><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exam.png">search</strong> </a></li> 
+
+                           </ul>
                          
                        
                           

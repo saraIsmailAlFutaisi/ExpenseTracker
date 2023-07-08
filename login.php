@@ -40,14 +40,17 @@
         <label>password</label>
         <p><input type="password" required  maxlength="14" minlength="10" placeholder="in ther your password" name="password" autofocus></p>
      </div> 
-     
+     <div> 
+             <label> E-mail address </label>
+             <p><input type="email" required placeholder="in ther your emil" name="email" autofocus></p>
+        </div> 
     <div> <p>
             <h2> <input type="submit" value="login" name="submit">
              <input type="reset" value="Delete all"></h2>
            
     </div>
  
- 
+   
    </form>
          
              
