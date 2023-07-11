@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <!--
   سارة إسماعيل الفطيسي
-  تقوم الصفحة بتسجيل دخول للأشخاص المسجلين في الصفحة
+  تقوم الصفحة بسماح دخول للأشخاص المسجلين في قاعدة البيانات
    !-->
 <html>
   <head>
@@ -18,7 +18,8 @@
     <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
     <?php
     session_start();
-                              if(empty( $_SESSION['username']))
+                             
+    if(empty(  $_SESSION['email']))
                            {  
                             echo'no acount' ;
                        }
@@ -29,22 +30,16 @@
     
    <p> <form action="cheaklogin.php" method="post"  > 
     
-     
-     <div> 
-        <label> user name</label>
-        <p><input type="text" required   maxlength="15" minlength="10" placeholder="in ther your name" name="username" autofocus></p> 
-     </div>
-
+   <label> E-mail address </label>
+             <p><input type="email" required placeholder="in ther your emil" name="email" autofocus></p>
+        </div> 
+    <div> <p>
      <div>
     
         <label>password</label>
         <p><input type="password" required  maxlength="14" minlength="10" placeholder="in ther your password" name="password" autofocus></p>
      </div> 
-     <div> 
-             <label> E-mail address </label>
-             <p><input type="email" required placeholder="in ther your emil" name="email" autofocus></p>
-        </div> 
-    <div> <p>
+     
             <h2> <input type="submit" value="login" name="submit">
              <input type="reset" value="Delete all"></h2>
            

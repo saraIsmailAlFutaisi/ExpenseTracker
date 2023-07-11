@@ -1,4 +1,7 @@
 <?php
+ /****************سارة إسماعيل الفطيسي
+      *تقوم بتسجيل خروج للمستخدم
+      */
 session_start();
 session_unset();
 session_destroy();

@@ -2,14 +2,14 @@
 <?php
 
      /****************سارة إسماعيل الفطيسي
-      * لتحقق إدا كان الأشخاص الدين قامو بدخول إلي الصفحة مسجلين فيها أو لا
+       لتحقق إدا كان الأشخاص الدين قامو بدخول إلي الصفحة مسجلين في قاعدة البيانات اولا
       */
     
     
     
     if(isset($_POST['submit']))
     {
-      $user= $_POST['username'];
+      
      $passaword=$_POST['password'];
      $email=$_POST['email'];
      require_once 'databes.php';
@@ -19,43 +19,42 @@
       Please try again later.</p>";
         die($conn -> error);
     }
-    else{
-      echo "  connect to database.<br/>
-     .</p>";
+  
+    $query="SELECT emil ,id,phon_nember FROM user WHERE emil ='$email'  and password ='$passaword'  " ;
+    $result = $conn->query($query);
+    if (!$result) {
+      echo "<p>Unable to execute the query.</p> ";
+      echo $query;
+      
     }
- 
-    $em="SELECT emil FROM user WHERE emil ='$email' ";
-    $G=$conn->prepare($em);
-    $G->execute();
-    $data=$G->fetch();
-    $pas= "SELECT password  FROM user WHERE password ='$passaword' ";
-    $h = $conn->prepare($pas);
-    $h->execute();
-    $base=$h->fetch();
-   
-    if($data && $base)
+    
+   $data = $result->fetch_array(MYSQLI_ASSOC);
+
+    
+    if($data)
     {
-      $_SESSION['username']= $user;
-       
+      
+
       echo'welcom back  ' ;
       
-      echo $_POST['username'];
+      echo $_POST['email'];
       session_start();
     
-      $Firstuser=$_POST['username'];
+      $email=$_POST['email'];
       
-       $_SESSION['username']=  $Firstuser;
-       $_SESSION['password']=  $passaword;
+       $_SESSION['email']=  $email;
+      $_SESSION['userid']= $data['id'];
       
-      header('REFRESH:5;URL= home page.php');
+      
+    header('REFRESH:4;URL= home page.php');
     }
    
    
      else
    {
-    echo'not found ';
-    echo $_POST['username'];    
-    header('REFRESH:5;URL= login.php');
+    echo $_POST['email'] ." ".'not found  plase try agin';
+       
+   header('REFRESH:5;URL= login.php');
    }
         
 }

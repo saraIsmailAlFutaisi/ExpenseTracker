@@ -10,9 +10,7 @@ echo'<br>';
 $DATEa=$_POST['DATE'];
 echo"$DATEa";
 echo'<br>';
-$interpicture=$_POST['file'];
-echo"$interpicture";
-echo'<br>';
+
  $namecate=$_POST['Chooseacategory'];
 echo "$namecate";
 echo'<br>';
@@ -31,17 +29,20 @@ if ($conn->connect_error) {
       Please try again later.</p>";
         die($conn -> error);
     }
-    else{
-      echo " connect to database.<br/>
-    .</p>";
-    }
- 
-    $query = "INSERT INTO categories(id_num,name_categories, payby,data_categories,comment,the_amount)  VALUES 
-    ('$namecate', '$payby','$DATEa','$commente', '$theam')" ;
+   
+    
+  session_start();
+ $id= $_SESSION['userid'];
+if(empty($_SESSION['userid'])){
+  echo'open count first';
+}
+    $query = "INSERT INTO categories(	id_num,name_categories, payby,data_categories,comment,the_amount)  VALUES 
+    ('$id','$namecate', '$payby','$DATEa','$commente', '$theam')" ;
            $result = $conn->query($query);
 
     if ($result) {
-        echo  "<p> inserted into the database.</p>";
+     //   echo  "<p> inserted into the database.</p>";
+     header('REFRESH:4;URL= home page.php');
     } else {
         echo   $conn -> error ;
         echo   "<br/>.The item was not added.";

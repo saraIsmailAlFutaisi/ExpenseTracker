@@ -1,7 +1,7 @@
 
 
 <?php
-/////لطباعةبيانات الاشخاص الي قامو بأنشاء حساب***** */
+/////لطباعةبيانات الاشخاص الي قامو بأنشاء حساب*وأدخالهم الي قاعدة البيانات**** */
 /*************سارة إسماعيل الفطيسي */
  
 
@@ -39,11 +39,13 @@ if(isset($_POST['submit'])){
             $_SESSION['First']= $First ;
             $_SESSION['Middle']= $Middle;
             $_SESSION['Last']=$Last;
-           
+            
+
+            
          
         
 
-//if(isset($_POST['submit'])){
+
   $firstn=$_POST['firstname'];
   $middlen=$_POST['middlename'];
   $lastn=$_POST['lastname'];
@@ -51,7 +53,7 @@ if(isset($_POST['submit'])){
   $phone=$_POST['phonenumber'];
   $passd=$_POST['passwordd'];
   $functi=$_POST['functin'];
-//}
+
 require_once 'databes.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) {
@@ -59,32 +61,27 @@ if ($conn->connect_error) {
       Please try again later.</p>";
         die($conn -> error);
     }
-    else{
-      echo "  connect to database.<br/>
-     .</p>";
-    }
+   
  
     $query = "INSERT INTO user(first_name,middle_name,last_name,phon_nember,emil,password,function_nub)  VALUES 
     ('$firstn','$middlen','$lastn','$phone','$emai','$passd','$functi')" ;
         $result = $conn->query($query);
 
     if ($result) {
-        echo  "<p>user inserted into the database.</p>";
+       // echo  "<p>user inserted into the database.</p>";
     } else {
         echo   $conn -> error ;
         echo   "<br/>.The item was not added.";
         echo    "<br/>$query ";
     }
-  
-       
-       $conn -> close();
-    
-     
+    header('REFRESH:5;url=home page.php');
+      
+       }
            
-            header('REFRESH:5;url=home page.php');
+          
            
          
-      }
+    
       
       else{
          echo'<br>';
@@ -93,11 +90,11 @@ if ($conn->connect_error) {
         header('REFRESH:2;url=signup.php');
       }
    
-     
+    }
    
-       } 
+        
      ?>
        
-
+  
 
  

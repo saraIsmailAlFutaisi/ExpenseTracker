@@ -23,7 +23,7 @@
 
        <header>
              <div>
-                 <strong><p>sara alfutise</p> 
+                 <strong>Expense Tracker<p></p> 
                   <p></p> </strong>
               </div>
               
@@ -42,7 +42,7 @@
                             <li><a href="../ExpenseTracker/about us.php"><strong><img alt="exam"src="../ExpenseTracker/icoon/exam.png">about us</strong></a></li> </ul> 
                             <?php
                              session_start();
-                             if(empty( $_SESSION['First'] )&&empty($_SESSION['username']))
+                             if(empty( $_SESSION['First'] )&&empty(  $_SESSION['email']))
                            { 
                           ?>
                            <ul>
@@ -72,7 +72,7 @@
                   
                       <?php
                           
-                            echo $_SESSION['username'];
+                            echo $_SESSION['email'];
                            }
                            
                             ?>
@@ -84,14 +84,17 @@
                              <li><a href="../ExpenseTracker/add category.php"><strong><img alt="money.png"src="../ExpenseTracker/icoon/money.png"> category</strong></a></li>
                            </ul>
                            <ul>
-                            <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
+                            <li><a href="../ExpenseTracker/edit.php"><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exam.png">updat user</strong> </a></li> 
 
                            </ul>
                            <ul>
-                            <li><a href=""><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exam.png">search</strong> </a></li> 
+                            <li><a href="../ExpenseTracker/search category.php"><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exchange (2).png">updat category</strong> </a></li> 
 
                            </ul>
-                         
+                           <ul>
+                            <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
+
+                           </ul>
                        
                           
                            
@@ -117,4 +120,3 @@
         <img alt="telegram"src="../ExpenseTracker/icoon/telegram.png"/>
     </footer>
 </html>
-"C:\xampp\htdocs\php\ExpenseTracker\icoon\profile.png"

@@ -15,7 +15,7 @@
    <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
     <?php
                               session_start();
-                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email'] ))
                            {  
                             echo'no acount' ;
                        }
@@ -26,7 +26,7 @@
                          else
                          {
                            
-                          echo $_SESSION['username'];
+                          echo $_SESSION['email'];
                          }
                          ?>
   </center> 

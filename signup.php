@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <!--
   سارة إسماعيل الفطيسي
-   تقوم هده الصفحة بأنشاء حساب للمستخدمين الجد
+  تقوم هده الصفحة بأنشاء حساب للمستخدمين الجدد
   !-->
 <html>
 
@@ -25,7 +25,7 @@
   
   <?php
                               session_start();
-                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email'] ))
                            {  
                             echo'no acount' ;
                        }
@@ -36,7 +36,7 @@
                          else
                          {
                            
-                          echo $_SESSION['username'];
+                          echo $_SESSION['email'];
                          }
                          ?>
   </header>
@@ -81,7 +81,7 @@
      <label>afunctin</label>
         <p>  <input type="text" required   maxlength="15" minlength="10"  placeholder="in ther your functin" name="functin" ></p>
           
-  
+           
 
 
 

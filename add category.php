@@ -12,18 +12,18 @@
         <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  
         <?php
                               session_start();
-                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['username'] ))
+                              if(empty( $_SESSION['First'] )&& empty(   $_SESSION['email']))
                            {  
                             echo'no acount' ;
                        }
                          elseif(!empty( $_SESSION['First'] ))
                          {
-                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] .$_SESSION['Last']  ;
                          }
                          else
                          {
                            
-                          echo $_SESSION['username'];
+                          echo  $_SESSION['email']  ;
                          }
                          ?>
                           
@@ -65,10 +65,7 @@
             </select>
           </div>
           
-         <div>
-             <p><label> inter picture</label>
-             <input type="file" name="file"/></p>
-         </div>
+        
          <div> 
             <label> comment</label>
             <p><input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" ></p> 

@@ -3,7 +3,8 @@
 
 <head>
 
-</head> 
+</head>
+
 <body style="background-color:rgb(3 244 197 / 35%)"  >
 <header style="background-color: rgb(50, 177, 177);">
 <button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
@@ -11,7 +12,7 @@
    
     <?php
      /****************سارة إسماعيل الفطيسي
-      * تعدل بيانات المستخدم
+      تعرض بيانات المستخدم
       */
                               session_start();
                               if(empty( $_SESSION['First'] )&& empty(  $_SESSION['email'] ))
@@ -27,14 +28,30 @@
                            
                           echo  $_SESSION['email'];
                          }
-                         ?>
+                         $id= $_SESSION['userid'];
+                  ?>
   
     </header>
-   
- 
-      <?php
-    require_once 'databes.php'; 
-    $conn = new mysqli($hn, $un, $pw, $db);
+
+
+<?php
+
+require_once 'databes.php'; 
+$conn = new mysqli($hn, $un, $pw, $db);
+
+
+
+
+ $query = "SELECT id,first_name ,middle_name,last_name,phon_nember,emil,password,function_nub	FROM user  WHERE id='$id' ";
+
+
+$result = $conn->query($query);
+if (!$result) {
+  echo "<p>Unable to execute the query.</p> ";
+  echo $query;
+  
+}
+$data = $result->fetch_array(MYSQLI_ASSOC);
     
 if (isset($_POST['update'])) // when click on Update button
 { 
@@ -68,10 +85,19 @@ if (isset($_POST['update'])) // when click on Update button
         <?php
       }
       ?>
-    </table>
-    
 
-  </form>
-</body>
 
-</html>
+
+<h3>Update user</h3>
+
+<form    method="POST">
+    <p><input type="text" name="first" value="<?php echo $data['first_name'] ?>" placeholder="Enter first name " Required></p>
+    <p> <input type="text" name="middle" value="<?php echo $data['middle_name'] ?>" placeholder="Enter middle name" Required></p>
+    <p><input type="text" name="last" value="<?php echo $data['last_name'] ?>" placeholder="Enter last name  "Required></p>
+    <p><input type="phon nember" name="phon" value="<?php echo $data['phon_nember'] ?>" placeholder="Enter phon nember" Required></p>
+    <p> <input type="email" name="emil" value="<?php echo $data['emil'] ?>" placeholder="Enter emil" Required></p>
+    <p><input type="password" name="password" value="<?php echo $data['password'] ?>" placeholder="Enter password" Required></p>
+    <p><input type="text" name="function" value="<?php echo $data['function_nub'] ?>" placeholder="Enter function" Required></p>
+
+    <input type="submit" name="update" value="Update">
+</form>
