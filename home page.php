@@ -90,12 +90,19 @@
                            <ul>
                             <li><a href="../ExpenseTracker/search category.php"><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exchange (2).png">updat category</strong> </a></li> 
 
-                           </ul>
-                           <ul>
-                            <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
+                           
+                        </ul>
+                        <ul>
+                            <li><a href="../ExpenseTracker/by adding expenses.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/money (1).png">adding expenses</strong> </a></li> 
 
                            </ul>
+                        <ul>
+                            <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
+
+                           </ul>
+                          
                        
+                          
                           
                            
 

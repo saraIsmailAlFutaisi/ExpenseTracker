@@ -1,8 +1,9 @@
 <?php
-if(isset($_POST['save']))
+
+if(isset($_POST['Enter']))
 {
-$theam=$_POST['theamount'];
-echo"$theam";
+$theexpense=$_POST['the_expense'];
+echo"$theexpense";
 echo'<br>';
 $commente=$_POST['comment'];
 echo"$commente";
@@ -11,9 +12,6 @@ $DATEa=$_POST['DATE'];
 echo"$DATEa";
 echo'<br>';
 
- $namecate=$_POST['Chooseacategory'];
-echo "$namecate";
-echo'<br>';
   $payby= $_POST['payby'];
   echo"$payby";
   echo'<br>';
@@ -21,7 +19,7 @@ echo'<br>';
 
 }
 
-
+ 
 require_once 'databes.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) {
@@ -33,15 +31,13 @@ if ($conn->connect_error) {
     
   session_start();
  $id= $_SESSION['userid'];
- $cate=$data['number_categories'];
- $_SESSION['number_categories']=$cate;
-if(empty($_SESSION['userid'])){
-  echo'open count first';
-}
-    $query = "INSERT INTO categories(	id_num,name_categories, payby,data_categories,comment,the_amount)  VALUES 
-    ('$id','$namecate', '$payby','$DATEa','$commente', '$theam')" ;
+ $catenum=$_SESSION['number_categories'];
+
+    $query = "INSERT INTO expenses(number_cate ,the_expense,exp_after_deduction,date_expenses,pay_by1,comment)  VALUES 
+    ('$id','$catenum', '$theexpense',012,'$DATEa','$payby','$commente')" ;
+     echo    "<br/>$query ";
            $result = $conn->query($query);
-           $data = $result->fetch_array(MYSQLI_ASSOC);
+
     if ($result) {
      //   echo  "<p> inserted into the database.</p>";
      header('REFRESH:4;URL= home page.php');
@@ -53,5 +49,6 @@ if(empty($_SESSION['userid'])){
   
        
        $conn -> close();
-     
+    
 ?>
+
