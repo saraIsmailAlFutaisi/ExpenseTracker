@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html>
@@ -69,14 +68,12 @@ caption {
       <tr>
         <td>Id</td>
         <td>number acategory</td>
-        <td>name acategory</td>
-        <td>the amount</td>
-        <td>pay by</td>
+        <td>the_expense</td>
+        <td>date_expenses</td>
+        <td>pay_by1</td>
         <td>comment</td>
-        <td>data</td>
         <td>Edit</td>
         <td>Delete</td>
-        <td>add expense</td>
       </tr>
 </p>
       <?php
@@ -89,7 +86,7 @@ caption {
         echo $conn->error;
         exit;
       }
-      $query = "SELECT 	id_num ,number_categories ,name_categories,payby,data_categories,comment,the_amount FROM 	categories WHERE 	id_num='$id'";
+      $query = "SELECT 	id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id'";
     
       $result = $conn->query($query);
       if (!$result) {
@@ -105,33 +102,32 @@ caption {
           <td>
             <?php
            
-             echo $data['id_num']; ?>
+             echo $data['id_user']; ?>
           </td>
           <td>
-            <?php echo $data['number_categories']; ?>
+            <?php echo $data['number_cate']; ?>
           </td>
           <td>
-            <?php echo $data['name_categories']; ?>
+            <?php echo $data['the_expense']; ?>
           </td>
           <td>
-            <?php echo $data['the_amount']; ?>
+            <?php echo $data['date_expenses']; ?>
           </td>
           <td>
-            <?php echo $data['payby']; ?>
+            <?php echo $data['pay_by1']; ?>
           </td>
           <td>
             <?php echo $data['comment']; ?>
           </td>
-          <td>
-            <?php echo $data['data_categories']; ?>
-          </td>
+        
           
         
-         <td><button><a href="editcategories.php?number_categories=<?php echo $data['number_categories'];?>">Edit</a></button></td> 
-       
-         <td><button><a href="delete category.php?number_categories=<?php echo $data['number_categories'];?>">Dele</a></button></td> 
-          <td><button><a href="by adding expenses.php?number_categories=<?php echo $data['number_categories'];?>">add expense</a></button></td> 
+          <td><button><a href="update expense2.php?number_cate=<?php echo $data['number_cate'];?>">Edit</a></button></td> 
+          <td><button><a href="delete expense.php?number_cate=<?php echo $data['number_cate'];?>">Delete</a></button></td> 
+          </td>
+         
         </tr>
+         
         <?php
       }
       ?>

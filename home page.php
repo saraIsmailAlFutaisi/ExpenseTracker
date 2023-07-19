@@ -81,7 +81,7 @@
                               <li> <a href="../ExpenseTracker/signup.php"><strong><img alt="user"src="../ExpenseTracker/icoon/add-user.png">signup</strong></a> </li>   
                             </ul>
                            <ul>
-                             <li><a href="../ExpenseTracker/add category.php"><strong><img alt="money.png"src="../ExpenseTracker/icoon/money.png"> category</strong></a></li>
+                             <li><a href="../ExpenseTracker/add category.php"><strong><img alt="money.png"src="../ExpenseTracker/icoon/money.png"> add category</strong></a></li>
                            </ul>
                            <ul>
                             <li><a href="../ExpenseTracker/edit.php"><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exam.png">updat user</strong> </a></li> 
@@ -89,13 +89,13 @@
                            </ul>
                            <ul>
                             <li><a href="../ExpenseTracker/search category.php"><strong> <img alt="search.png"src="../ExpenseTracker/icoon/exchange (2).png">updat category</strong> </a></li> 
-
-                           
-                        </ul>
-                        <ul>
-                            <li><a href="../ExpenseTracker/by adding expenses.php"><strong> <img alt="enter.png"src="../ExpenseTracker/icoon/money (1).png">adding expenses</strong> </a></li> 
+                        
+                          </ul>
+                          <ul>
+                            <li><a href="../ExpenseTracker/update expense.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/exchange (1).png"></strong> updat expenses</a></li> 
 
                            </ul>
+                          
                         <ul>
                             <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
 

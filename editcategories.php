@@ -7,7 +7,7 @@
 
 <body style="background-color:rgb(3 244 197 / 35%)"  >
 <header style="background-color: rgb(50, 177, 177);">
-<button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
+<button><a href="../ExpenseTracker/search category.php "><strong><h2>back</h2></strong></a></button>
 <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
    
     <?php /****************سارة إسماعيل الفطيسي
@@ -64,8 +64,8 @@ if (isset($_POST['update']))
     $payby= $_POST['payby']; 
     $comment= $_POST['comment']; 
     $datacategories = $_POST['DATE']; 
-    $query ="update categories set  the_amount =' $theamount',payby='$payby',comment='$comment',data_categories=' $datacategories',name_categories='$namecategorie' WHERE  number_categories='$numbercate' ";
-
+    $query ="update categories set the_amount =' $theamount',payby='$payby',comment='$comment',data_categories=' $datacategories',name_categories='$namecategorie' WHERE  number_categories='$numbercate' ";
+    $query2=
     $edit = $conn->query($query);
    
     if ($edit) {
@@ -84,6 +84,7 @@ if (isset($_POST['update']))
 
                <p> <label>date</label>
                 <input  type="date"   name="DATE" value="<?php echo $data['data_categories'] ?>"/></p>
+                
                 <p>  <label for="Choose " >Choose a category</label>
                   <select  name="Chooseacategory" id="Choose "  value="<?php echo $data['name_categories'] ?>"  required>
                          <option value="food" >food</option>
@@ -110,3 +111,5 @@ if (isset($_POST['update']))
            <input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" value="<?php echo $data['comment'] ?>"  ></p> 
     <input type="submit" name="update" value="Update">
 </form>
+</body>
+</html>

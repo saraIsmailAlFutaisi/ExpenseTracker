@@ -33,8 +33,7 @@ if ($conn->connect_error) {
     
   session_start();
  $id= $_SESSION['userid'];
- $cate=$data['number_categories'];
- $_SESSION['number_categories']=$cate;
+ 
 if(empty($_SESSION['userid'])){
   echo'open count first';
 }
