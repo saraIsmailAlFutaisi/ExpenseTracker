@@ -37,10 +37,11 @@
 require_once 'databes.php'; 
 $conn = new mysqli($hn, $un, $pw, $db);
 
-$numbercate= $_GET['number_cate']; 
+$count= $_GET['count']; 
 
+$numbercate= $_GET['number_cate'] ;
 
-$query = "SELECT id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE number_cate='$numbercate' and id_user='$id' ";
+$query = "SELECT count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE count='$count' and id_user='$id' ";
 
 $result = $conn->query($query); 
 if (!$result) {
@@ -48,20 +49,27 @@ if (!$result) {
     echo $query;
     die($conn->error);
 }
-
-  
-
+$query2="SELECT id_num ,number_categories,name_categories,payby,data_categories,comment,the_amount FROM categories WHERE number_categories='$numbercate';";
+$result2 = $conn->query($query2); 
+if (!$result2) {
+    echo "<p>Unable to execute the query</p> ";
+    echo $query2;
+    die($conn->error);
+} 
 $data=$result->fetch_array(MYSQLI_ASSOC);
+$data2=$result2->fetch_array(MYSQLI_ASSOC);
 
 if (isset($_POST['delete'])) 
 {  
-    
-    $query ="Delete from expenses where number_cate='$numbercate'AND id_user ='$id'";
-    $query2=
-    $data['date_expenses'];   
-    $delete =  $conn->query($query);
-    if($delete )
-    {
+    $expense = $_POST['the_expense'];
+    $themont=$data2['the_amount'];
+   $reslt=$themont+$expense;
+    $query3 ="update categories set the_amount ='$reslt' WHERE number_categories='$numbercate'AND id_num ='$id' ";
+    $query4="Delete from expenses where count='$count' and id_user='$id' ";
+    $delete =  $conn->query($query3);
+    $update =  $conn->query($query4);
+    if($delete  && $update)
+    {  
         $conn->close();// Close connection
         header("location: update expense.php"); // redirects to all records page
         exit;
@@ -69,7 +77,8 @@ if (isset($_POST['delete']))
     else
     {
         echo "<p>Unable to execute the query.</p> ";
-        echo $query ;
+        echo $query3;
+        echo $query4;
         die ($conn -> error);
     }    	
    
@@ -83,8 +92,9 @@ if (isset($_POST['delete']))
                 <input type="the_expense" required  name="the_expense"  value="<?php echo $data['the_expense']; ?>"autofocus></p>
            </div>
           <p>  <label for="pay by" >pay by </label>
-            <select  name="pay" id="pay by"  value="<?php echo$data['pay_by1']; ?>">
-                   <option value="check">check</option>
+            <select  name="pay" id="pay by" >
+                <option ><?php echo$data['pay_by1']; ?></option>
+                  <option value="check">check</option>
                    <option value="creditcard" >credit card</option>
                    <option value="Cash">Cash</option></p>
                   

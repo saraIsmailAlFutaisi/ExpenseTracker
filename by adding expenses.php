@@ -26,6 +26,7 @@
                           echo  $_SESSION['email']  ;
                          }
                          $id= $_SESSION['userid'];
+                        
                          ?>
                           
                           
@@ -53,7 +54,7 @@ if (!$result) {
 
 $data=$result->fetch_array(MYSQLI_ASSOC);
 
-if (isset($_POST['Enter'])) 
+if (isset($_POST['Ente'])) 
 {
    $themont=$_POST['theamount'];
     $the_expense=$_POST['the_expense'];
@@ -61,12 +62,12 @@ if (isset($_POST['Enter']))
     $comment= $_POST['commentt']; 
     $dataexpense= $_POST['DAT']; 
 
-
+  
     $query2 = "INSERT INTO expenses ( id_user,number_cate,the_expense,date_expenses,pay_by1,comment)  VALUES 
     ('$id' ,'$numbercate' ,'$the_expense', ' $dataexpense','$payby', '$comment')" ;
            $result = $conn->query($query2);
     if ($result) {
-     //   echo  "<p> inserted into the database.</p>";
+    
     
     } else {
         echo   $conn -> error ;
@@ -83,7 +84,7 @@ if (isset($_POST['Enter']))
     $edit = $conn->query($query3);
    
     if ($edit) {
-      header('REFRESH:4;URL= home page.php');
+      header('REFRESH:1;URL= home page.php');
         $conn->close(); 
         exit;
     } else {
@@ -145,7 +146,7 @@ if (isset($_POST['Enter']))
 
          </div>
          <p>
-            <input type="submit" value="save" name="Enter">
+            <input type="submit" value="save" name="Ente">
              <input type="reset" value="Delete all">
              
         </p>

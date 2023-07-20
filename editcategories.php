@@ -65,7 +65,7 @@ if (isset($_POST['update']))
     $comment= $_POST['comment']; 
     $datacategories = $_POST['DATE']; 
     $query ="update categories set the_amount =' $theamount',payby='$payby',comment='$comment',data_categories=' $datacategories',name_categories='$namecategorie' WHERE  number_categories='$numbercate' ";
-    $query2=
+ 
     $edit = $conn->query($query);
    
     if ($edit) {
@@ -85,8 +85,11 @@ if (isset($_POST['update']))
                <p> <label>date</label>
                 <input  type="date"   name="DATE" value="<?php echo $data['data_categories'] ?>"/></p>
                 
-                <p>  <label for="Choose " >Choose a category</label>
-                  <select  name="Chooseacategory" id="Choose "  value="<?php echo $data['name_categories'] ?>"  required>
+                <p>  <label for="Choose" >Choose a category</label>
+               
+                  <select  name="Chooseacategory" id="Choose" required>
+                    
+                         <option value="" > <?php echo $data['name_categories'] ?></option> 
                          <option value="food" >food</option>
                          <option value="gift" >gift</option>
                          <option value="study" >study</option>
@@ -100,7 +103,8 @@ if (isset($_POST['update']))
                <p> <label >the amount </label>
                 <input type="the amount" required placeholder=" the amount" name="theamount"  value="<?php echo $data['the_amount'] ?>" autofocus></p>
           <p>  <label for="pay by" >pay by </label>
-            <select  name="payby" id="pay by"  value="<?php echo $data['payby'] ?>"  required>
+                <select  name="payby" id="pay by"  value=""  required>
+                 <option><?php echo $data['payby'] ?></option>
                    <option value="check">check</option>
                    <option value="creditcard" >credit card</option>
                    <option value="Cash">Cash</option></p>

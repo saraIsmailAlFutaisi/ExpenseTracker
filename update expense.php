@@ -62,10 +62,28 @@ caption {
  
 		</style>
   <form action="" method="post" >
+  <center>
+ <p><strong>Choose Search a category:</strong></p>
+   
+ <p><select  name="Chooseacategory" id="Choose " required>
+            <option value="3" >food</option>
+              <option value="5" >gift</option>
+               <option value="1" >study</option>
+               <option value="6">holidays</option>
+              <option value="7" >fule</option>
+              <option value="2" >clothes</option>
+                <option value="4" >home</option>
+                        
+                        
+                  </select></p>
 
+
+  <p><input type="submit" name="submit" value="Search"></p></center>
+ 
   <p>
     <table user="2">
       <tr>
+        <td>count</td>
         <td>Id</td>
         <td>number acategory</td>
         <td>the_expense</td>
@@ -77,7 +95,30 @@ caption {
       </tr>
 </p>
       <?php
+     if (isset($_POST['submit'])) 
+ {$Chooseacategory=$_POST['Chooseacategory'];
+ 
+  if (!$Chooseacategory ) {
+     echo '<p>You have not entered search details.<br/>
+     Please go back and try again.</p>';
+     exit;
+  }
 
+  // whitelist the searchtype
+  switch ($Chooseacategory) {
+    case 1:
+    case 2:
+    case 3:
+      case 4:  
+        case 5:  
+          case 6:  
+            case 7:     
+      break;
+    default: 
+      echo '<p>That is not a valid search type. <br/>
+      Please go back and try again.</p>';
+      exit; 
+  }
       require_once 'databes.php';
       $conn = new mysqli($hn, $un, $pw, $db); // Using database connection file here
       if ($conn->connect_error) {
@@ -86,19 +127,28 @@ caption {
         echo $conn->error;
         exit;
       }
-      $query = "SELECT 	id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id'";
-    
+      $query = "SELECT count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id' AND number_cate='$Chooseacategory' ";
+     
       $result = $conn->query($query);
+      
       if (!$result) {
         echo "<p>Unable to execute the query.</p> ";
         echo $query;
         die($conn->error);
       }
       // fetch data from database
-      
-      while ($data = $result->fetch_array(MYSQLI_ASSOC)) {
+      $result->num_rows;
+      $rows = $result->num_rows;
+      for ($j = 0 ; $j < $rows ; ++$j)
+      {
+        $data = $result->fetch_array(MYSQLI_ASSOC)
         ?>
         <tr>
+          <td>
+            <?php
+           
+             echo $data['count']; ?>
+          </td>
           <td>
             <?php
            
@@ -118,17 +168,21 @@ caption {
           </td>
           <td>
             <?php echo $data['comment']; ?>
-          </td>
-        
-          
-        
-          <td><button><a href="update expense2.php?number_cate=<?php echo $data['number_cate'];?>">Edit</a></button></td> 
-          <td><button><a href="delete expense.php?number_cate=<?php echo $data['number_cate'];?>">Delete</a></button></td> 
+         </td>
+  
+     
+ 
+     
+      
+      
+          <td><button><a href="update expense2.php?count=<?php echo $data['count'];?>& number_cate=<?php echo $data['number_cate'];?>">Edit</a></button></td> 
+          <td><button><a href="delete expense.php?count=<?php echo $data['count'];?>& number_cate=<?php echo $data['number_cate'];?>">Delete</a></button></td> 
           </td>
          
         </tr>
          
         <?php
+      }
       }
       ?>
     </table>

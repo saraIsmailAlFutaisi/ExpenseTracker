@@ -7,7 +7,7 @@
 
 <body style="background-color:rgb(3 244 197 / 35%)"  >
 <header style="background-color: rgb(50, 177, 177);">
-<button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
+<button><a href="../ExpenseTracker/update expense.php "><strong><h2>back</h2></strong></a></button>
 <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
    
     <?php /****************سارة إسماعيل الفطيسي
@@ -39,42 +39,53 @@
 
 require_once 'databes.php'; 
 $conn = new mysqli($hn, $un, $pw, $db);
+$count= $_GET['count'] ;
+$numbercate= $_GET['number_cate'] ;
 
-$numbercate= $_GET['number_cate']; 
-
-
-$query = "SELECT 	id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE number_cate='$numbercate' and id_user='$id' ";
-
+$query = "SELECT  count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE count='$count' and id_user='$id' ";
+$query2="SELECT id_num ,number_categories,name_categories,payby,data_categories,comment,the_amount FROM categories WHERE number_categories='$numbercate' AND id_num='$id';";
 $result = $conn->query($query); 
-if (!$result) {
+$result2 = $conn->query($query2); 
+if (!$result &&$result2) {
     echo "<p>Unable to execute the query</p> ";
     echo $query;
+    echo $query2;
     die($conn->error);
 }
 
 
-
 $data=$result->fetch_array(MYSQLI_ASSOC);
+$data2=$result2->fetch_array(MYSQLI_ASSOC);
 
-if (isset($_POST['Enter'])) 
+if (isset($_POST['submit'])) 
 {
   
     $the_expense=$_POST['the_expense'];
     $payby= $_POST['pay']; 
     $comment= $_POST['commentt']; 
     $dataexpense= $_POST['DAT']; 
-
-    $query ="update expenses set  the_expense =' $the_expense',pay_by1='$payby',comment='$comment',date_expenses=' $dataexpense' WHERE  number_cate='$numbercate' ";
-
-    $edit = $conn->query($query);
+    $exp=$data['the_expense'];
+    $theamount=$data2['the_amount'];
+    $reslt1=$theamount+$exp;
    
-    if ($edit) {
+   
+    $query3 ="update categories set the_amount =' $reslt1' WHERE  number_categories='$numbercate' ";
+    $reslt2=$reslt1- $the_expense;
+    echo  $reslt2;
+    $query5 ="update categories set the_amount =' $reslt2' WHERE  number_categories='$numbercate' ";
+    $query4 ="update expenses set  the_expense =' $the_expense',pay_by1='$payby',comment='$comment',date_expenses=' $dataexpense' WHERE  count='$count' and id_user='$id' ";
+
+    $edit1 = $conn->query($query3);
+    $edit3 = $conn->query($query5);
+    $edit2 = $conn->query($query4);
+    if ($edit1 && $edit2 && $edit3) {
         $conn->close(); 
         header("location:search category.php");
         exit;
     } else {
         echo "<p>Unable to execute the query.</p> ";
-        echo $query;
+        echo $query3  ;
+        echo $query4;
         die($conn->error);
     }
 }
@@ -87,8 +98,9 @@ if (isset($_POST['Enter']))
                 <input type="the_expense" required  name="the_expense"  value="<?php echo $data['the_expense']; ?>"autofocus></p>
            </div>
           <p>  <label for="pay by" >pay by </label>
-            <select  name="pay" id="pay by"  value="<?php echo$data['pay_by1']; ?>">
-                   <option value="check">check</option>
+            <select  name="pay" id="pay by"  value="">
+                  <option ><?php echo$data['pay_by1']; ?></option>
+                  <option value="check">check</option>
                    <option value="creditcard" >credit card</option>
                    <option value="Cash">Cash</option></p>
                   
@@ -107,7 +119,7 @@ if (isset($_POST['Enter']))
 
          </div>
          <p>
-            <input type="submit" value="save" name="Enter">
+            <input type="submit" value="save" name="submit">
              <input type="reset" value="Delete all">
              
         </p>

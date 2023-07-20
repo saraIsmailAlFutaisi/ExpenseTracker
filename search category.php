@@ -63,7 +63,23 @@ caption {
  
 		</style>
   <form action="" method="post" >
+  <center>
+ <p><strong>Choose Search a category:</strong></p>
+   
+ <p><select  name="Chooseacategory" id="Choose " required>
+            <option value="food" >food</option>
+              <option value="gift" >gift</option>
+               <option value="study" >study</option>
+               <option value="holidays">holidays</option>
+              <option value="fule" >fule</option>
+              <option value="clothes" >clothes</option>
+                <option value="home" >home</option>
+                        
+                        
+                  </select></p>
 
+
+  <p><input type="submit" name="submit" value="Search"></p></center>
   <p>
     <table user="2">
       <tr>
@@ -80,7 +96,31 @@ caption {
       </tr>
 </p>
       <?php
-
+     if (isset($_POST['submit'])) 
+     {
+      $Chooseacategory=$_POST['Chooseacategory'];
+     
+      if (!$Chooseacategory ) {
+         echo '<p>You have not entered search details.<br/>
+         Please go back and try again.</p>';
+         exit;
+      }
+    
+      // whitelist the searchtype
+      switch ($Chooseacategory) {
+        case 'food':
+        case 'gift':
+        case 'study':
+          case 'holidays':  
+            case 'fule':  
+              case 'clothes':  
+                case 'home':     
+          break;
+        default: 
+          echo '<p>That is not a valid search type. <br/>
+          Please go back and try again.</p>';
+          exit; 
+      }
       require_once 'databes.php';
       $conn = new mysqli($hn, $un, $pw, $db); // Using database connection file here
       if ($conn->connect_error) {
@@ -89,7 +129,7 @@ caption {
         echo $conn->error;
         exit;
       }
-      $query = "SELECT 	id_num ,number_categories ,name_categories,payby,data_categories,comment,the_amount FROM 	categories WHERE 	id_num='$id'";
+      $query = "SELECT 	id_num ,number_categories ,name_categories,payby,data_categories,comment,the_amount FROM 	categories WHERE 	id_num='$id' AND name_categories='$Chooseacategory'";
     
       $result = $conn->query($query);
       if (!$result) {
@@ -132,8 +172,10 @@ caption {
          <td><button><a href="delete category.php?number_categories=<?php echo $data['number_categories'];?>">Dele</a></button></td> 
           <td><button><a href="by adding expenses.php?number_categories=<?php echo $data['number_categories'];?>">add expense</a></button></td> 
         </tr>
-        <?php
+     
+      <?php
       }
+    }
       ?>
     </table>
 
