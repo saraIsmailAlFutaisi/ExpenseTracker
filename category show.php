@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+   <link rel="icon" href="../ExpenseTracker/icoon/money (1).png"/>
+            <meta name=" add category "  content=" بإضافة  النفقات"/>
+            <title>add category</title>
+            <meta charset="UTF-8" />
+    </head>
+    <body style="background-color:rgb(3 244 197 / 35%)"  >
+        <header style="background-color: rgb(87 138 143 / 39%);" >
+            <button><a href="../ExpenseTracker/update expense.php"><h2>back</h2></a></button>
+        <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  </strong></header>
 <?php
 if(isset($_POST['save']))
 {
@@ -55,3 +67,5 @@ else{
        $conn -> close();
      
 ?>
+    </body>
+</html>

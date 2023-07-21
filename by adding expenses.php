@@ -40,7 +40,7 @@
                           
         </header>
         <main>
-          
+            
 <?php
 
 require_once 'databes.php'; 
@@ -82,11 +82,10 @@ if (isset($_POST['Ente']))
         echo   "<br/>.The item was not added.";
         echo    "<br/>$query2";
     }
-    $Result= $themont-$the_expense;
-    if( $Result<0)
-    {
-        $Result=0;  
-    }
+   
+   
+        $Result= $themont-$the_expense;  
+   
     $query3 ="update  	categories set the_amount ='$Result' WHERE  number_categories='$numbercate' ";    
     
     $edit = $conn->query($query3);

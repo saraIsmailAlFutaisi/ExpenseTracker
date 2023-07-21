@@ -76,7 +76,8 @@ caption {
  <p><strong>Choose Search a category:</strong></p>
    
  <p><select  name="Chooseacategory" id="Choose " required>
-            <option value="food" >food</option>
+               <option value="Choose acategory" >Choose  acategory</option>
+              <option value="food" >food</option>
               <option value="gift" >gift</option>
                <option value="study" >study</option>
                <option value="holidays">holidays</option>

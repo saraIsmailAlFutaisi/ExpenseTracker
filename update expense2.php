@@ -51,7 +51,7 @@ $count= $_GET['count'] ;
 $numbercate= $_GET['number_cate'] ;
 
 $query = "SELECT  count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE count='$count' and id_user='$id' ";
-$query2="SELECT id_num ,number_categories,name_categories,payby,data_categories,comment,the_amount FROM categories WHERE number_categories='$numbercate' AND id_num='$id';";
+$query2="SELECT the_amount FROM categories WHERE number_categories='$numbercate' AND id_num='$id';";
 $result = $conn->query($query); 
 $result2 = $conn->query($query2); 
 if (!$result &&$result2) {

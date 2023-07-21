@@ -74,20 +74,21 @@ caption {
   <center>
  <p><strong>Choose Search a category to expense:</strong></p>
    
- <div>
-               <p> <label>date</label>
-                <input  type="date"   name="DATE"/></p>
-                <p>  <label for="pay by" >pay by </label>
+
+                <label>date</label>
+                <input  type="date"   name="DATE"/>
+                <label for="pay by" >pay by </label>
               <select  name="payby" id="pay by" required>
-                   <option value="check">check</option>
+              <option value="choose your pay by">choose your pay by</option>
+              <option value="check">check</option>
                    <option value="creditcard" >credit card</option>
-                   <option value="Cash">Cash</option></p>
+                   <option value="Cash">Cash</option>
                   
             </select>
-            </div>
+           
 
 
-  <p><input type="submit" name="submit" value="Search"></p></center>
+  <input type="submit" name="submit" value="Search"></center>
  
   <p>
     <table user="2">

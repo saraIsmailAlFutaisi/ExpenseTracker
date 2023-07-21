@@ -49,7 +49,7 @@ if (!$result) {
     echo $query;
     die($conn->error);
 }
-$query2="SELECT id_num ,number_categories,name_categories,payby,data_categories,comment,the_amount FROM categories WHERE number_categories='$numbercate';";
+$query2="SELECT the_amount FROM categories WHERE number_categories='$numbercate';";
 $result2 = $conn->query($query2); 
 if (!$result2) {
     echo "<p>Unable to execute the query</p> ";
