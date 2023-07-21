@@ -32,10 +32,11 @@ if ($conn->connect_error) {
    
     
   session_start();
- $id= $_SESSION['userid'];
- 
-if(empty($_SESSION['userid'])){
-  echo'open count first';
+  if(!empty($_SESSION['userid']))
+ {$id= $_SESSION['userid'];
+}
+else{
+  $id= $_SESSION['user'];
 }
     $query = "INSERT INTO categories(	id_num,name_categories, payby,data_categories,comment,the_amount)  VALUES 
     ('$id','$namecate', '$payby','$DATEa','$commente', '$theam')" ;

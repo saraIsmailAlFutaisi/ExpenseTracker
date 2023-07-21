@@ -14,22 +14,36 @@
      /****************سارة إسماعيل الفطيسي
       تعرض بيانات المستخدم
       */
-                              session_start();
-                              if(empty( $_SESSION['First'] )&& empty(  $_SESSION['email'] ))
-                           {  
-                            echo'no acount' ;
-                       }
-                         elseif(!empty( $_SESSION['First'] ))
-                         {
-                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
-                         }
-                         else
-                         {
-                           
-                          echo  $_SESSION['email'];
-                         }
-                         $id= $_SESSION['userid'];
-                  ?>
+      session_start();
+      try {
+      if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']) &&empty($_SESSION['userid'] )&&empty($_SESSION['user']))
+   {  
+   
+    throw new Exception("no acount");
+}
+ elseif(!empty( $_SESSION['First'] )&&!empty($_SESSION['user']))
+ {
+  echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+  $id= $_SESSION['user'];
+ }
+ else
+ {
+   
+  echo $_SESSION['email'];
+  $id= $_SESSION['userid'];
+ }
+
+
+}
+catch (Exception $e) 
+{
+
+  echo $e->getMessage();
+  $id="";
+}
+ ?>
+
+
   
     </header>
 
@@ -52,7 +66,8 @@ if (!$result) {
   
 }
 $data = $result->fetch_array(MYSQLI_ASSOC);
-    
+
+ 
 if (isset($_POST['update'])) // when click on Update button
 { 
  

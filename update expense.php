@@ -14,21 +14,30 @@
     <?php  /****************سارة إسماعيل الفطيسي
      تقوم هده الصفحة بعرض جميع فئات المستخدم وتسمح بتعديلها
       */
-                              session_start();
-                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email'] ))
+      session_start();
+                              try {
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']) &&empty($_SESSION['userid'] ))
                            {  
-                            echo'no acount' ;
+                           
+                            throw new Exception("no acount");
                        }
-                         elseif(!empty( $_SESSION['First'] ))
+                         elseif(!empty( $_SESSION['First'] )&&!empty($_SESSION['user']))
                          {
                           echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                          $id= $_SESSION['user'];
                          }
                          else
                          {
                            
                           echo $_SESSION['email'];
+                          $id= $_SESSION['userid'];
                          }
-                         $id= $_SESSION['userid'];
+      
+                        
+                      }
+                      catch (Exception $e) {
+                          echo $e->getMessage();
+                      }
                          ?>
   
     </header>
@@ -63,19 +72,19 @@ caption {
 		</style>
   <form action="" method="post" >
   <center>
- <p><strong>Choose Search a category:</strong></p>
+ <p><strong>Choose Search a category to expense:</strong></p>
    
- <p><select  name="Chooseacategory" id="Choose " required>
-            <option value="3" >food</option>
-              <option value="5" >gift</option>
-               <option value="1" >study</option>
-               <option value="6">holidays</option>
-              <option value="7" >fule</option>
-              <option value="2" >clothes</option>
-                <option value="4" >home</option>
-                        
-                        
-                  </select></p>
+ <div>
+               <p> <label>date</label>
+                <input  type="date"   name="DATE"/></p>
+                <p>  <label for="pay by" >pay by </label>
+              <select  name="payby" id="pay by" required>
+                   <option value="check">check</option>
+                   <option value="creditcard" >credit card</option>
+                   <option value="Cash">Cash</option></p>
+                  
+            </select>
+            </div>
 
 
   <p><input type="submit" name="submit" value="Search"></p></center>
@@ -96,23 +105,21 @@ caption {
 </p>
       <?php
      if (isset($_POST['submit'])) 
- {$Chooseacategory=$_POST['Chooseacategory'];
- 
-  if (!$Chooseacategory ) {
+ {$DATE=$_POST['DATE'];
+  $payby=$_POST['payby'];
+   
+  if (!$DATE&& !$payby) {
      echo '<p>You have not entered search details.<br/>
      Please go back and try again.</p>';
      exit;
   }
 
   // whitelist the searchtype
-  switch ($Chooseacategory) {
-    case 1:
-    case 2:
-    case 3:
-      case 4:  
-        case 5:  
-          case 6:  
-            case 7:     
+  switch ($payby) {
+    case 'check':
+    case 'creditcard':
+    case 'Cash':
+       
       break;
     default: 
       echo '<p>That is not a valid search type. <br/>
@@ -127,7 +134,7 @@ caption {
         echo $conn->error;
         exit;
       }
-      $query = "SELECT count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id' AND number_cate='$Chooseacategory' ";
+      $query = "SELECT count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id' AND date_expenses='$DATE' AND pay_by1='$payby' ";
      
       $result = $conn->query($query);
       

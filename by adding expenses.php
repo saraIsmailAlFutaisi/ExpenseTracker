@@ -12,21 +12,29 @@
         <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  
         <?php
                               session_start();
-                              if(empty( $_SESSION['First'] )&& empty(   $_SESSION['email']))
+                              try {
+                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']) &&empty($_SESSION['userid'] ))
                            {  
-                            echo'no acount' ;
+                           
+                            throw new Exception("no acount");
                        }
-                         elseif(!empty( $_SESSION['First'] ))
+                         elseif(!empty( $_SESSION['First'] )&&!empty($_SESSION['user']))
                          {
-                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] .$_SESSION['Last']  ;
+                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+                          $id= $_SESSION['user'];
                          }
                          else
                          {
                            
-                          echo  $_SESSION['email']  ;
+                          echo $_SESSION['email'];
+                          $id= $_SESSION['userid'];
                          }
-                         $id= $_SESSION['userid'];
+      
                         
+                      }
+                      catch (Exception $e) {
+                          echo $e->getMessage();
+                      }
                          ?>
                           
                           

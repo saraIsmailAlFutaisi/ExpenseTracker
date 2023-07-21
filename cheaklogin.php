@@ -1,4 +1,12 @@
 
+<html>
+  <head>
+
+  </head> 
+  <body style="background-color:rgb(3 244 197 / 35%)" >
+    <header style="background-color: rgb(87 138 143 / 39%);;" >
+    <button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
+    <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png"></strong></header>
 <?php
 
      /****************سارة إسماعيل الفطيسي
@@ -64,5 +72,5 @@
     }
     ?>
  
-    
+  </body>
 

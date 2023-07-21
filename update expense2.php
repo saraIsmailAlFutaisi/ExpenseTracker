@@ -13,24 +13,32 @@
     <?php /****************سارة إسماعيل الفطيسي
       * تقوم بتعديل فئة معينة يختاره ا لمستخدم
       */
-                              session_start();
-                              if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']))
-                           {  
-                            echo'no acount' ;
-                       }
-                         elseif(!empty( $_SESSION['First'] ))
-                         {
-                          echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
-                         }
-                         else
-                         {
-                           
-                          echo$_SESSION['email'];
-                         }
+                             
+      session_start();
+      try {
+      if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']) &&empty($_SESSION['userid'] ))
+   {  
+   
+    throw new Exception("no acount");
+}
+ elseif(!empty( $_SESSION['First'] )&&!empty($_SESSION['user']))
+ {
+  echo "  " . $_SESSION['First'] ."  ".  $_SESSION['Middle'] . " ". $_SESSION['Last'];
+  $id= $_SESSION['user'];
+ }
+ else
+ {
+   
+  echo $_SESSION['email'];
+  $id= $_SESSION['userid'];
+ }
 
-                         $id= $_SESSION['userid'];
-                      
-                         ?>
+
+}
+catch (Exception $e) {
+  echo $e->getMessage();
+}
+ ?>
   
     </header>
 
@@ -80,7 +88,7 @@ if (isset($_POST['submit']))
     $edit2 = $conn->query($query4);
     if ($edit1 && $edit2 && $edit3) {
         $conn->close(); 
-        header("location:search category.php");
+        header("location:update expense.php");
         exit;
     } else {
         echo "<p>Unable to execute the query.</p> ";
