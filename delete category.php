@@ -11,7 +11,7 @@
 <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
    
     <?php /****************سارة إسماعيل الفطيسي
-      * تقوم بتعديل فئة معينة يختاره ا لمستخدم
+      * تقوم بحدف المصاريف الخاصة بلفئة وتم تحدف الفئة نفسها
       */
                               session_start();
                               if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']))

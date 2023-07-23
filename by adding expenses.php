@@ -1,4 +1,9 @@
+
 <!DOCTYPE html>
+<!--سارة أسماعيل الفطيسي
+ تقوم هده الصفحة بي إضافة مصاريف للمستخدم علي حسب الفئة التي تخترها من جدول الفئات 
+وتقوم بسحب المبلغ المدخل وهو المصروف من الفئة وتخزن المصروف في قاعدة البيانات إداكان المصروف اقل من المبلغ المخصص للفئة 
+وإدا لم يكن تعرض رسالة خطاء ولاتخزن ولاتعدل-->
 <html>
     <head>
    <link rel="icon" href="../ExpenseTracker/icoon/money (1).png"/>
@@ -69,8 +74,19 @@ if (isset($_POST['Ente']))
     $payby= $_POST['pay']; 
     $comment= $_POST['commentt']; 
     $dataexpense= $_POST['DAT']; 
-
-  
+    
+     if( $themont<$the_expense)
+     {
+        ?>
+        <script>
+          
+                alert('erro the mont is last then expense')
+                 
+        </script>
+        <?php
+      
+     }
+     else {
     $query2 = "INSERT INTO expenses ( id_user,number_cate,the_expense,date_expenses,pay_by1,comment)  VALUES 
     ('$id' ,'$numbercate' ,'$the_expense', ' $dataexpense','$payby', '$comment')" ;
            $result = $conn->query($query2);
@@ -84,7 +100,7 @@ if (isset($_POST['Ente']))
     }
    
    
-        $Result= $themont-$the_expense;  
+    $Result= $themont-$the_expense;  
    
     $query3 ="update  	categories set the_amount ='$Result' WHERE  number_categories='$numbercate' ";    
     
@@ -100,7 +116,7 @@ if (isset($_POST['Ente']))
         die($conn->error);
     }
 }
-
+}
 ?>
 
        <form  method="post">

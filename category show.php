@@ -11,24 +11,24 @@
             <button><a href="../ExpenseTracker/update expense.php"><h2>back</h2></a></button>
         <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  </strong></header>
 <?php
+/*******************
+ * سارة إسماعيل الفطيسي
+ * تقوم هده الصفحة بإدخال بينات الفئة في قاعدة البيانات
+ * وتقوم بعرضها من قاعدة البيانات
+ */
 if(isset($_POST['save']))
 {
 $theam=$_POST['theamount'];
-echo"$theam";
-echo'<br>';
+
 $commente=$_POST['comment'];
-echo"$commente";
-echo'<br>';
+
 $DATEa=$_POST['DATE'];
-echo"$DATEa";
-echo'<br>';
+
 
  $namecate=$_POST['Chooseacategory'];
-echo "$namecate";
-echo'<br>';
+
   $payby= $_POST['payby'];
-  echo"$payby";
-  echo'<br>';
+
 
 
 }
@@ -53,8 +53,8 @@ else{
     $query = "INSERT INTO categories(	id_num,name_categories, payby,data_categories,comment,the_amount)  VALUES 
     ('$id','$namecate', '$payby','$DATEa','$commente', '$theam')" ;
            $result = $conn->query($query);
-           $data = $result->fetch_array(MYSQLI_ASSOC);
-    if ($result) {
+      
+    if ( $result) {
      //   echo  "<p> inserted into the database.</p>";
      header('REFRESH:4;URL= home page.php');
     } else {
@@ -62,8 +62,29 @@ else{
         echo   "<br/>.The item was not added.";
         echo    "<br/>$query ";
     }
-  
-       
+    $query2= "SELECT 	id_num ,number_categories ,name_categories,payby,data_categories,comment,the_amount FROM 	categories WHERE 	id_num='$id' ";
+    $result2 = $conn->query($query2);
+   $data2 = $result2->fetch_array(MYSQLI_ASSOC) ;
+      
+       echo $data2['name_categories']; 
+       echo '<br>' ; 
+       echo $data2['payby']; ; 
+       echo '<br>' ;
+       echo $data2['data_categories']; ; 
+       echo '<br>' ;
+       echo $data2['comment']; ; 
+       echo '<br>' ;
+       echo $data2['the_amount']; 
+       echo '<br>' ;
+   
+      if ($data2) {
+        //   echo  "<p> inserted into the database.</p>";
+        header('REFRESH:4;URL= home page.php');
+       } else {
+           echo   $conn -> error ;
+           echo   "<br/>.The item was not added.";
+           echo    "<br/>$query ";
+       }
        $conn -> close();
      
 ?>

@@ -22,6 +22,7 @@ if(isset($_POST['submit'])){
       $phonenumber=$_POST['phonenumber'];
       $pass=$_POST['passwordd'];
       $password=$_POST['confirm'];
+      $functi=$_POST['functin'];
       if($pass== $password)
       {   
   
@@ -40,21 +41,14 @@ if(isset($_POST['submit'])){
             echo'<br>';
             echo"$phonenumber";
             echo'<br>';
-            
+            echo"$functi";
+            echo'<br>';
         
 
             
          
         
 
-
-  $firstn=$_POST['firstname'];
-  $middlen=$_POST['middlename'];
-  $lastn=$_POST['lastname'];
-  $emai=$_POST['email'];
-  $phone=$_POST['phonenumber'];
-  $passd=$_POST['passwordd'];
-  $functi=$_POST['functin'];
 
 require_once 'databes.php';
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -68,8 +62,8 @@ if ($conn->connect_error) {
     
  
     $query = "INSERT INTO user(first_name,middle_name,last_name,phon_nember,emil,password,function_nub)  VALUES 
-    ('$firstn','$middlen','$lastn','$phone','$emai','$passd','$functi')" ;
-       $query2="SELECT id FROM user WHERE emil ='$emai'  and password ='$passd'  " ;
+    ('$firstname','$middlename','$lastname','$phonenumber','$email','$pass','$functi')" ;
+       $query2="SELECT id FROM user WHERE emil ='$email'  and password ='$pass'  " ;
 
        $result = $conn->query($query);
        $result2 = $conn->query($query2);
@@ -85,6 +79,7 @@ if ($conn->connect_error) {
        $_SESSION['Last']=$Last;
        $_SESSION['user']= $data2['id'];
        $dd= $_SESSION['user'];
+       header('REFRESH:2;url=home page.php');
     
     } 
     else {

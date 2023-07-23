@@ -1,6 +1,8 @@
 
 <!DOCTYPE html>
-
+<!--سارة أسماعيل الفطيسي-
+تقوم هده الصفحة بعرض فئات المستخدم ويستطيع ان يبحت عنهم عن طريق الاسم
+ويمكن تعديل وحدف وإضافة مصريف لكل فئة-->
 <html>
 
 <head>
@@ -12,9 +14,7 @@
 <button><a href="../ExpenseTracker/home page.php "><strong><h2>back</h2></strong></a></button>
 <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
    
-    <?php  /****************سارة إسماعيل الفطيسي
-     تقوم هده الصفحة بعرض جميع فئات المستخدم وتسمح بتعديلها
-      */
+    <?php 
                               session_start();
                               try {
                               if(empty( $_SESSION['First'] )&& empty( $_SESSION['email']) &&empty($_SESSION['userid'] ))
@@ -179,7 +179,7 @@ caption {
         
          <td><button><a href="editcategories.php?number_categories=<?php echo $data['number_categories'];?>">Edit</a></button></td> 
        
-         <td><button><a href="delete category.php?number_categories=<?php echo $data['number_categories'];?>">Dele</a></button></td> 
+         <td><button><a href="delete category.php?number_categories=<?php echo $data['number_categories'];?>">Delete</a></button></td> 
           <td><button><a href="by adding expenses.php?number_categories=<?php echo $data['number_categories'];?>">add expense</a></button></td> 
         </tr>
      

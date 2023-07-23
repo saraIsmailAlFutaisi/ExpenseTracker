@@ -11,6 +11,10 @@
             <button><a href="../ExpenseTracker/home page.php "><h2>back</h2></a></button>
         <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">  
         <?php
+        /**************
+         سارة إسماعيل الفطيسي 
+         تسمح للمستخدمين بإدخال فئات جديدة
+         */
                               session_start();
                               if(empty( $_SESSION['First'] )&& empty(   $_SESSION['email']))
                            {  

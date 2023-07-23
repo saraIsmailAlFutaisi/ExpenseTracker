@@ -12,7 +12,8 @@
 <strong> <img alt="enterh.png"src="../ExpenseTracker/icoon/login.png">
    
     <?php  /****************سارة إسماعيل الفطيسي
-     تقوم هده الصفحة بعرض جميع فئات المستخدم وتسمح بتعديلها
+     تقوم هده الصفحة بعرض المصاريف الخاصة بالمستخدم عن طريق اسم الفئة للمصروف وتحديد المصدر الخاص 
+      بلمصروف والفتره المحددة للمصاريف ويمكن تعديل وحدف المصاريف
       */
       session_start();
                               try {
@@ -70,13 +71,17 @@ caption {
 }
  
 		</style>
-  <form action="" method="post" >
+  <form  method="post" >
   <center>
  <p><strong>Choose Search a category to expense:</strong></p>
-   
+ <p><strong>Enter  category name</strong><br />
+  <input name=" categoryname" type="text" size="20"></p>
 
-                <label>date</label>
+
+                <label>date form</label>
                 <input  type="date"   name="DATE"/>
+                <label>to data</label>
+                <input  type="date"   name="DATE2"/>
                 <label for="pay by" >pay by </label>
               <select  name="payby" id="pay by" required>
               <option value="choose your pay by">choose your pay by</option>
@@ -85,9 +90,7 @@ caption {
                    <option value="Cash">Cash</option>
                   
             </select>
-           
-
-
+          
   <input type="submit" name="submit" value="Search"></center>
  
   <p>
@@ -95,6 +98,7 @@ caption {
       <tr>
         <td>count</td>
         <td>Id</td>
+        <td>category name</td>
         <td>number acategory</td>
         <td>the_expense</td>
         <td>date_expenses</td>
@@ -103,19 +107,34 @@ caption {
         <td>Edit</td>
         <td>Delete</td>
       </tr>
-</p>
+
       <?php
      if (isset($_POST['submit'])) 
  {$DATE=$_POST['DATE'];
   $payby=$_POST['payby'];
-   
-  if (!$DATE&& !$payby) {
+  $DATE2=$_POST['DATE2'];
+  $categoryname=$_POST['categoryname'];
+  if (!$DATE&& !$payby &&!$DATE2&&!$categoryname) {
      echo '<p>You have not entered search details.<br/>
      Please go back and try again.</p>';
      exit;
   }
 
   // whitelist the searchtype
+  switch ($categoryname) {
+    case 'food':
+    case 'gift':
+    case 'study':
+     case 'holidays':
+     case 'fule':
+     case 'clothes': 
+      case 'home':
+      break;
+    default: 
+      echo '<p>That is not a valid search type. <br/>
+      Please go back and try again.</p>';
+      exit; 
+  }
   switch ($payby) {
     case 'check':
     case 'creditcard':
@@ -135,21 +154,21 @@ caption {
         echo $conn->error;
         exit;
       }
-      $query = "SELECT count,id_user,number_cate ,the_expense,date_expenses,pay_by1,comment FROM expenses WHERE 	id_user='$id' AND date_expenses='$DATE' AND pay_by1='$payby' ";
-     
+
+      $query = "SELECT expenses.count,expenses.id_user,expenses.number_cate ,expenses.the_expense,expenses.date_expenses,expenses.pay_by1,expenses.comment,categories.name_categories FROM expenses INNER JOIN categories ON expenses.number_cate=categories.number_categories WHERE  expenses.id_user='$id'AND categories.name_categories Like  '%$categoryname%'AND date_expenses BETWEEN '$DATE'AND'$DATE2' AND pay_by1='$payby' ";
+      $query2= "SELECT name_categories FROM categories WHERE 	id_num='$id' AND name_categories='$categoryname'";
       $result = $conn->query($query);
-      
-      if (!$result) {
+      $result2 = $conn->query($query2);
+      if (!$result && $result2 ) {
         echo "<p>Unable to execute the query.</p> ";
         echo $query;
         die($conn->error);
       }
       // fetch data from database
-      $result->num_rows;
-      $rows = $result->num_rows;
-      for ($j = 0 ; $j < $rows ; ++$j)
+      $data2 = $result2->fetch_array(MYSQLI_ASSOC);
+      while($data = $result->fetch_array(MYSQLI_ASSOC))
       {
-        $data = $result->fetch_array(MYSQLI_ASSOC)
+       
         ?>
         <tr>
           <td>
@@ -161,6 +180,9 @@ caption {
             <?php
            
              echo $data['id_user']; ?>
+          </td>
+          <td>
+            <?php echo $data2['name_categories']; ?>
           </td>
           <td>
             <?php echo $data['number_cate']; ?>
