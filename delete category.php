@@ -88,7 +88,7 @@ if(isset($_POST['delete']))
             </select>     
  
             <p> <label> comment</label>
-           <input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" value="<?php echo $data['comment'] ?>"  ></p> 
+           <input type="text"    maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" value="<?php echo $data['comment'] ?>"  ></p> 
   <input type="submit" name="delete" value="Delete">
 </form>
 </body>

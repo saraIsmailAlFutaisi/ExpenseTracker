@@ -88,7 +88,7 @@ if (isset($_POST['update']))
                 
                 <p>  <label for="Choose" >Choose a category</label>
                
-                  <select  name="Chooseacategory" id="Choose" required>
+                  <select  name="Chooseacategory" id="Choose" >
                     
                          <option value="" > <?php echo $data['name_categories'] ?></option> 
                          <option value="food" >food</option>
@@ -102,9 +102,9 @@ if (isset($_POST['update']))
                   </select>
 
                <p> <label >the amount </label>
-                <input type="the amount" required placeholder=" the amount" name="theamount"  value="<?php echo $data['the_amount'] ?>" autofocus></p>
+                <input type="the amount" placeholder=" the amount" name="theamount"  value="<?php echo $data['the_amount'] ?>" autofocus></p>
           <p>  <label for="pay by" >pay by </label>
-                <select  name="payby" id="pay by"  value=""  required>
+                <select  name="payby" id="pay by"  value=""  >
                  <option><?php echo $data['payby'] ?></option>
                    <option value="check">check</option>
                    <option value="creditcard" >credit card</option>
@@ -113,7 +113,7 @@ if (isset($_POST['update']))
             </select>     
  
             <p> <label> comment</label>
-           <input type="text" required   maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" value="<?php echo $data['comment'] ?>"  ></p> 
+           <input type="text" maxlength="15" minlength="10" placeholder="in ther your comment" name="comment" value="<?php echo $data['comment'] ?>"  ></p> 
     <input type="submit" name="update" value="Update">
 </form>
 </body>

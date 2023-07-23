@@ -104,7 +104,7 @@ if (isset($_POST['submit']))
 
 <div> 
                <p> <label >the_expense</label>
-                <input type="the_expense" required  name="the_expense"  value="<?php echo $data['the_expense']; ?>"autofocus></p>
+                <input type="the_expense"  name="the_expense"  value="<?php echo $data['the_expense']; ?>"autofocus></p>
            </div>
           <p>  <label for="pay by" >pay by </label>
             <select  name="pay" id="pay by"  value="">

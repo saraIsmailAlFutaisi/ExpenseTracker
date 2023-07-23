@@ -79,7 +79,7 @@ if (isset($_POST['Ente']))
      {
         ?>
         <script>
-          
+                     
                 alert('erro the mont is last then expense')
                  
         </script>
@@ -124,12 +124,12 @@ if (isset($_POST['Ente']))
           
        <div> 
                <p> <label > name category</label>
-                <input type="Chooseacategory" required name="Chooseacategory"  value="<?php echo $data['name_categories'] ?>"></p>
+                <input type="Chooseacategory"  name="Chooseacategory"  value="<?php echo $data['name_categories'] ?>"></p>
            </div>
 
             <div> 
                <p> <label >the amount </label>
-                <input type="the_expense" required  name="theamount"value="<?php echo $data['the_amount'] ?>"></p>
+                <input type="the_expense"   name="theamount"value="<?php echo $data['the_amount'] ?>"></p>
            </div>
            <div>
                <p> <label>date</label>
@@ -137,16 +137,16 @@ if (isset($_POST['Ente']))
             </div>
             <div> 
             <label> comment</label>
-            <p><input type="text" required name="comment" value="<?php echo $data['comment'] ?>" ></p> 
+            <p><input type="text" name="comment" value="<?php echo $data['comment'] ?>" ></p> 
          </div>
          <div> 
             <label>pay by</label>
-            <p><input type="payby" required name="payby" value="<?php echo $data['payby'] ?>"></p> 
+            <p><input type="payby" name="payby" value="<?php echo $data['payby'] ?>"></p> 
          </div>
         /*********************************************** */
           <div> 
                <p> <label >the_expense</label>
-                <input type="the_expense" required  name="the_expense" autofocus></p>
+                <input type="the_expense" required  name="the_expense" autofocus minlength="1"></p>
            </div>
           <p>  <label for="pay by" >pay by </label>
             <select  name="pay" id="pay by" required>
