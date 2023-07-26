@@ -97,6 +97,16 @@
                            </ul>
                           
                         <ul>
+                            <li><a href="../ExpenseTracker/transformation.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/data-transformation (1).png">transformation many</strong> </a></li> 
+
+                           </ul>
+                             
+                        <ul>
+                            <li><a href="../ExpenseTracker/evaluation.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/good-feedback.png">evaluation </strong> </a></li> 
+
+                           </ul>
+                             
+                        <ul>
                             <li><a href="../ExpenseTracker/logout.php"><strong> <img alt="enterexpan.png"src="../ExpenseTracker/icoon/enter.png">logout</strong> </a></li> 
 
                            </ul>
